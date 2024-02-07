@@ -1,11 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ZDatabase.Interfaces;
-using ZDatabase.Services.Interfaces;
+﻿using ZDatabase.Interfaces;
 using ZSecurity.Interfaces;
 
 namespace ZSecurity.Repositories
