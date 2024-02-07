@@ -4,6 +4,10 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Authors>Ricardo Zambon</Authors>
+    <Description>ZSecurity is a library that brings additional functionalities for handling security.</Description>
+    <Copyright>Ricardo Zambon</Copyright>
+    <PackageProjectUrl>https://github.com/RicardoZambon/ZSecurity</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿namespace ZWebApi.Exceptions
+﻿namespace ZSecurity.Exceptions
 {
     public class MissingUserPermissionException : Exception
     {

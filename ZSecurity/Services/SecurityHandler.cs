@@ -1,12 +1,12 @@
 ﻿using System.Reflection;
 using ZDatabase.Services.Interfaces;
-using ZWebApi.Attributes;
-using ZWebApi.Exceptions;
-using ZWebApi.Helpers;
-using ZWebApi.Interfaces;
-using ZWebApi.Repositories;
+using ZSecurity.Attributes;
+using ZSecurity.Exceptions;
+using ZSecurity.Helpers;
+using ZSecurity.Interfaces;
+using ZSecurity.Repositories;
 
-namespace ZWebApi.Services
+namespace ZSecurity.Services
 {
     public class SecurityHandler<TBaseUserRepository, TActions, TUsersKey> : ISecurityHandler
         where TBaseUserRepository : BaseUsersRepository<TActions, TUsersKey>

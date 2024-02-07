@@ -1,6 +1,6 @@
-﻿using ZWebApi.Enums;
+﻿using ZSecurity.Enums;
 
-namespace ZWebApi.Attributes
+namespace ZSecurity.Attributes
 {
     /// <summary>
     /// Specifies action type for allowing or denying users to access the service method.
@@ -24,7 +24,7 @@ namespace ZWebApi.Attributes
 
         #region Constructor        
         /// <summary>
-        /// Initializes a new instance of the <see cref="ZWebApi.Attributes.ActionMethodAttribute"/> class.
+        /// Initializes a new instance of the <see cref="ZSecurity.Attributes.ActionMethodAttribute"/> class.
         /// </summary>
         /// <param name="actionType">Type of the action <see cref="Niten.System.Core.Enums.ActionTypes"/>.</param>
         public ActionMethodAttribute(ActionTypes actionType = ActionTypes.RegularUsersAndAdmins)
