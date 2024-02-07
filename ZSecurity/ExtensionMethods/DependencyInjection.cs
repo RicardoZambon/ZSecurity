@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ZWebApi.Services;
+using ZSecurity.Services;
 
-namespace ZWebApi.ExtensionMethods
+namespace ZSecurity.ExtensionMethods
 {
     public static class DependencyInjection
     {

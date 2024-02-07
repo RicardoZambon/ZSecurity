@@ -1,4 +1,4 @@
-﻿namespace ZWebApi.Interfaces
+﻿namespace ZSecurity.Interfaces
 {
     /// <summary>
     /// Interface for action entities.

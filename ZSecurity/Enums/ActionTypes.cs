@@ -1,4 +1,4 @@
-﻿namespace ZWebApi.Enums
+﻿namespace ZSecurity.Enums
 {
     /// <summary>
     /// Enum for  user permissions in action types.

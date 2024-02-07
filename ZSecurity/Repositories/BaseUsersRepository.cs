@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ZDatabase.Interfaces;
 using ZDatabase.Services.Interfaces;
-using ZWebApi.Interfaces;
+using ZSecurity.Interfaces;
 
-namespace ZWebApi.Repositories
+namespace ZSecurity.Repositories
 {
     public abstract class BaseUsersRepository<TActions, TUsersKey>
         where TActions : class, IActionEntity

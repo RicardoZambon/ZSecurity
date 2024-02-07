@@ -1,7 +1,7 @@
 ﻿using ZDatabase.Entities;
 using ZDatabase.Security.Interfaces;
 
-namespace ZWebApi.Entities
+namespace ZSecurity.Entities
 {
     /// <summary>
     /// Abstract class for role entities.
