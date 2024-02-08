@@ -1,9 +1,11 @@
 ﻿using ZDatabase.Interfaces;
 using ZSecurity.Interfaces;
+using ZSecurity.Repositories.Interfaces;
 
 namespace ZSecurity.Repositories
 {
-    public abstract class BaseUsersRepository<TActions, TUsersKey>
+    /// <inheritdoc />
+    public abstract class BaseUsersRepository<TActions, TUsersKey> : IBaseUsersRepository<TActions, TUsersKey>
         where TActions : class, IActionEntity
         where TUsersKey : struct
     {
@@ -26,15 +28,7 @@ namespace ZSecurity.Repositories
         #endregion
 
         #region Public methods        
-        /// <summary>
-        /// Determines whether the user has any action asynchronous.
-        /// </summary>
-        /// <param name="userID">The user identifier.</param>
-        /// <param name="actionCodes">The action codes.</param>
-        /// <returns>
-        ///   <c>true</c> if the user has any of the action codes; otherwise, <c>false</c>.
-        /// </returns>
-        /// <exception cref="System.ArgumentNullException">actionCodes</exception>
+        /// <inheritdoc />
         public async Task<bool> HasAnyActionAsync(TUsersKey userID, params string[] actionCodes)
         {
             if (!actionCodes.Any())
@@ -46,11 +40,7 @@ namespace ZSecurity.Repositories
                 .Any(x => actionCodes.Contains(x.Code));
         }
 
-        /// <summary>
-        /// Lists all actions asynchronous.
-        /// </summary>
-        /// <param name="userID">The user identifier.</param>
-        /// <returns>The actions list.</returns>
+        /// <inheritdoc />
         public abstract Task<IEnumerable<TActions>> ListAllActionsAsync(TUsersKey userID);
         #endregion
 

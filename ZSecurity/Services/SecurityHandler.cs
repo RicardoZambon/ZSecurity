@@ -5,11 +5,12 @@ using ZSecurity.Exceptions;
 using ZSecurity.Helpers;
 using ZSecurity.Interfaces;
 using ZSecurity.Repositories;
+using ZSecurity.Repositories.Interfaces;
 
 namespace ZSecurity.Services
 {
     public class SecurityHandler<TBaseUserRepository, TActions, TUsersKey> : ISecurityHandler
-        where TBaseUserRepository : BaseUsersRepository<TActions, TUsersKey>
+        where TBaseUserRepository : IBaseUsersRepository<TActions, TUsersKey>
         where TActions : class, IActionEntity
         where TUsersKey : struct
     {
