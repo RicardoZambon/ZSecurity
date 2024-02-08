@@ -8,7 +8,7 @@ namespace ZSecurity.Repositories
         where TUsersKey : struct
     {
         #region Variables
-        private readonly IDbContext dbContext;
+        protected readonly IDbContext dbContext;
         #endregion
 
         #region Properties
