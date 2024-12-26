@@ -12,7 +12,7 @@ namespace ZSecurity.Attributes
         #region Variables
         #endregion
 
-        #region Properties        
+        #region Properties
         /// <summary>
         /// Gets the type of the action.
         /// </summary>
@@ -22,7 +22,7 @@ namespace ZSecurity.Attributes
         public ActionTypes ActionType { get; }
         #endregion
 
-        #region Constructor        
+        #region Constructorsn
         /// <summary>
         /// Initializes a new instance of the <see cref="ZSecurity.Attributes.ActionMethodAttribute"/> class.
         /// </summary>

@@ -4,19 +4,21 @@ using ZSecurity.Attributes;
 using ZSecurity.Exceptions;
 using ZSecurity.Helpers;
 using ZSecurity.Interfaces;
-using ZSecurity.Repositories;
 using ZSecurity.Repositories.Interfaces;
 
 namespace ZSecurity.Services
 {
+    /// <inheritdoc />
     public class SecurityHandler<TBaseUserRepository, TActions, TUsersKey> : ISecurityHandler
         where TBaseUserRepository : IBaseUsersRepository<TActions, TUsersKey>
         where TActions : class, IActionEntity
         where TUsersKey : struct
     {
-        #region Variables
+        #region Constants
         private const string ADMINISTRATORS_ACTION_CODE = "AdministrativeMaster";
+        #endregion
 
+        #region Variables
         private readonly TBaseUserRepository baseUsersRepository;
         private readonly ICurrentUserProvider<TUsersKey> currentUserProvider;
         #endregion
@@ -28,7 +30,7 @@ namespace ZSecurity.Services
         }
         #endregion
 
-        #region Constructor        
+        #region Constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="SecurityHandler{TUsersKey}"/> class.
         /// </summary>
@@ -43,7 +45,7 @@ namespace ZSecurity.Services
         }
         #endregion
 
-        #region Public methods        
+        #region Public methods
         /// <inheritdoc />
         public async Task<bool> CheckCurrentUserHasPermissionOrIsAdministratorAsync(string actionName)
         {

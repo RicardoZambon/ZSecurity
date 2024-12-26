@@ -16,7 +16,7 @@ namespace ZSecurity.Repositories
         #region Properties
         #endregion
 
-        #region Constructor        
+        #region Constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="SecurityHandler{TUsersKey}"/> class.
         /// </summary>
@@ -27,7 +27,7 @@ namespace ZSecurity.Repositories
         }
         #endregion
 
-        #region Public methods        
+        #region Public methods
         /// <inheritdoc />
         public async Task<bool> HasAnyActionAsync(TUsersKey userID, params string[] actionCodes)
         {
