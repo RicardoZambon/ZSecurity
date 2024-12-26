@@ -5,7 +5,7 @@ using ZSecurity.Attributes;
 namespace ZSecurity.Helpers
 {
     /// <summary>
-    /// Helper static class for <see cref="ZSecurity.Attributes.ActionMethodAttribute"/>.
+    /// Static helper class for <see cref="ZSecurity.Attributes.ActionMethodAttribute"/>.
     /// </summary>
     public static class StackTraceHelper
     {
