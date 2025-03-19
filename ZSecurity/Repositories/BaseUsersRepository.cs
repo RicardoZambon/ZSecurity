@@ -10,6 +10,9 @@ namespace ZSecurity.Repositories
         where TUsersKey : struct
     {
         #region Variables
+        /// <summary>
+        /// The database context.
+        /// </summary>
         protected readonly IDbContext dbContext;
         #endregion
 
@@ -18,7 +21,7 @@ namespace ZSecurity.Repositories
 
         #region Constructors
         /// <summary>
-        /// Initializes a new instance of the <see cref="SecurityHandler{TUsersKey}"/> class.
+        /// Initializes a new instance of the <see cref="BaseUsersRepository{TActions, TUsersKey}"/> class.
         /// </summary>
         /// <param name="dbContext">The <see cref="ZDatabase.Interfaces.IDbContext"/> instance.</param>
         public BaseUsersRepository(IDbContext dbContext)
