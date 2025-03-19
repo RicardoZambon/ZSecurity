@@ -24,6 +24,9 @@ namespace ZSecurity.Services
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Gets the administrators action code.
+        /// </summary>
         protected virtual string AdministratorsActionCode
         {
             get { return ADMINISTRATORS_ACTION_CODE; }
@@ -32,10 +35,10 @@ namespace ZSecurity.Services
 
         #region Constructors
         /// <summary>
-        /// Initializes a new instance of the <see cref="SecurityHandler{TUsersKey}"/> class.
+        /// Initializes a new instance of the <see cref="SecurityHandler{TBaseUserRepository, TActions, TUsersKey}"/> class.
         /// </summary>
-        /// <param name="baseUsersRepository">The <see cref="TBaseUserRepository"/> instance.</param>
-        /// <param name="currentUserProvider">The <see cref="ZDatabase.Security.Services.SecurityHandler{TUsersKey}"/> instance.</param>
+        /// <param name="baseUsersRepository">The <see cref="IBaseUsersRepository{TActions, TUsersKey}"/> instance.</param>
+        /// <param name="currentUserProvider">The <see cref="ICurrentUserProvider{TUsersKey}"/> instance.</param>
         public SecurityHandler(
                 TBaseUserRepository baseUsersRepository,
                 ICurrentUserProvider<TUsersKey> currentUserProvider)
@@ -71,8 +74,8 @@ namespace ZSecurity.Services
         /// <inheritdoc />
         public async Task ValidateUserHasPermissionAsync()
         {
-            MethodBase method = StackTraceHelper.GetMethodImplementingActionMethodAttribute()
-                ?? throw new Exception("Could not find action method.");
+            MethodBase method = StackTraceHelper.GetStackTraceMethodImplementingAttribute<ActionMethodAttribute>()
+                ?? throw new InvalidOperationException("Could not find any method implementing the ActionMethodAttribute in the stack trace.");
 
             string? serviceName = method.DeclaringType?.GetInterfaces().FirstOrDefault()?.Name;
             string? methodName = method.Name;
@@ -84,7 +87,7 @@ namespace ZSecurity.Services
                 throw new MissingUserPermissionException(actionName);
             }
 
-            IList<string> actionsToCheck = new List<string> { actionName };
+            IList<string> actionsToCheck = [actionName];
 
             ActionMethodAttribute? actionAttribute = method!.GetCustomAttribute<ActionMethodAttribute>();
 

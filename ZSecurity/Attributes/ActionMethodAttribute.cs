@@ -26,7 +26,7 @@ namespace ZSecurity.Attributes
         /// <summary>
         /// Initializes a new instance of the <see cref="ZSecurity.Attributes.ActionMethodAttribute"/> class.
         /// </summary>
-        /// <param name="actionType">Type of the action <see cref="Niten.System.Core.Enums.ActionTypes"/>.</param>
+        /// <param name="actionType">Type of the action <see cref="ActionTypes"/>.</param>
         public ActionMethodAttribute(ActionTypes actionType = ActionTypes.RegularUsersAndAdmins)
         {
             ActionType = actionType;
