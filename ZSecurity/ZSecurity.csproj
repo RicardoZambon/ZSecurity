@@ -8,7 +8,10 @@
 		<Authors>Ricardo Zambon</Authors>
 		<Company>ZambonSoft</Company>
 		<Version>1.0.0</Version>
+		<PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
+		<PackageTags>security;authorization;permissions</PackageTags>
 		<RepositoryUrl>https://github.com/RicardoZambon/ZSecurity</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<Description>ZSecurity is a library that brings additional functionalities for handling security.</Description>
@@ -24,7 +27,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ZDatabase" Version="1.0.0" />
+		<PackageReference Include="ZDatabase" Version="1.5.1" />
 	</ItemGroup>
 
 </Project>
