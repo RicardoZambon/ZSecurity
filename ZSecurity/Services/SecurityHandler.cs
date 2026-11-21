@@ -87,9 +87,11 @@ namespace ZSecurity.Services
                 throw new MissingUserPermissionException(actionName);
             }
 
-            IList<string> actionsToCheck = [actionName];
+            // Start empty: the action type decides which codes grant access, so an
+            // administrators-only action must not also accept its own action code.
+            IList<string> actionsToCheck = [];
 
-            ActionMethodAttribute? actionAttribute = method!.GetCustomAttribute<ActionMethodAttribute>();
+            ActionMethodAttribute? actionAttribute = method.GetCustomAttribute<ActionMethodAttribute>();
 
             if (actionAttribute is not null)
             {
