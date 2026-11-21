@@ -393,7 +393,53 @@ namespace ZSecurity.UnitTests.Services
             await service.OnlyAdminsActionAsync();
 
             // Assert
-            await repository.Received(1).HasAnyActionAsync(UserID, Arg.Is<string[]>(x => x.Contains(AdministratorsActionCode)));
+            await repository.Received(1).HasAnyActionAsync(UserID, Arg.Is<string[]>(x => x.SequenceEqual(new[] { AdministratorsActionCode })));
+        }
+
+        /// <summary>
+        /// Test the ValidateUserHasPermissionAsync should not accept the action's own code for an
+        /// action restricted to administrators, so a regular user holding it is still refused.
+        /// </summary>
+        [Fact]
+        public async Task ValidateUserHasPermissionAsync_Fail_DoesNotCheckTheActionNameForAnAdministratorsAction()
+        {
+            // Arrange
+            IBaseUsersRepository<ActionEntityFake, long> repository = SecurityHandlerFactory.CreateRepository(true);
+
+            ISecuredServiceFake service = new SecuredServiceFake(SecurityHandlerFactory.Create(
+                repository,
+                SecurityHandlerFactory.CreateCurrentUserProvider(UserID)));
+
+            // Act
+            await service.OnlyAdminsActionAsync();
+
+            // Assert
+            await repository.Received(1).HasAnyActionAsync(
+                UserID,
+                Arg.Is<string[]>(x => !x.Contains($"{nameof(ISecuredServiceFake)}.{nameof(ISecuredServiceFake.OnlyAdminsActionAsync)}")));
+        }
+
+        /// <summary>
+        /// Test the ValidateUserHasPermissionAsync should check the action name only once for an
+        /// action restricted to regular users.
+        /// </summary>
+        [Fact]
+        public async Task ValidateUserHasPermissionAsync_Pass_ChecksOnlyTheActionNameForARegularUsersAction()
+        {
+            // Arrange
+            IBaseUsersRepository<ActionEntityFake, long> repository = SecurityHandlerFactory.CreateRepository(true);
+
+            ISecuredServiceFake service = new SecuredServiceFake(SecurityHandlerFactory.Create(
+                repository,
+                SecurityHandlerFactory.CreateCurrentUserProvider(UserID)));
+
+            // Act
+            await service.OnlyRegularUsersActionAsync();
+
+            // Assert
+            await repository.Received(1).HasAnyActionAsync(
+                UserID,
+                Arg.Is<string[]>(x => x.SequenceEqual(new[] { $"{nameof(ISecuredServiceFake)}.{nameof(ISecuredServiceFake.OnlyRegularUsersActionAsync)}" })));
         }
 
         /// <summary>
